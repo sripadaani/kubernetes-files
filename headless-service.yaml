@@ -7,6 +7,6 @@ spec:
     - name: mongo
       port: 27017
       targetPort: 27017
-  clusterIP: None
+  clusterIP: None  # cluster IP should be none when we create head-less service
   selector:
     app: mongo
