@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mywebapp-svc
+  labels:
+    app: mywebapp
+spec:
+  type: NodePort
+  selector:
+    app: mywebapp
+  ports:
+    - name: http
+      port: 8082
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebapp-01
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mywebapp
+      version: v1.0
+  template:
+    metadata:
+      name: mywebapp-pod
+      labels:
+        app: mywebapp
+        version: v1.0  
+    spec:
+      containers:
+        - name: mywebapp
+          image: sripadaani/makerapp-v1:1
+          ports:
+            - containerPort: 80

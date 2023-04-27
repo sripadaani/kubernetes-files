@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebapp-deploy
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mywebapp
+  template:
+    metadata:
+      name: mywebapp-pod
+      labels:
+        app: mywebapp
+    spec:
+      containers:
+        - name: mywebapp
+          image: sripadaani/makerapp-v1:1
+          ports:
+            - containerPort: 80

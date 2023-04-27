@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebapp-deploy
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mywebapp
+  template:
+    metadata:
+      name: mywebapp-pod
+      labels:
+        app: mywebapp
+    spec:
+      nodeName: ip-172-20-53-77.ap-south-1.compute.internal
+      containers:
+        - name: mywebapp
+          image: sripadaani/sample-app-v04
+          ports:
+            - containerPort: 80
