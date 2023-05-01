@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: www-svc-ingress
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: myapp1.stepintolearning.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: www-svc
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp1-svc-ingress
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: myapp2.stepintolearning.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: myapp1-svc
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp2-sv-ingress
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: www.stepintolearning.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: myapp2-svc
+                port:
+                  number: 80
+
