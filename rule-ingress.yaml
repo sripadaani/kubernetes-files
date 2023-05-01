@@ -2,12 +2,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: myapp1-svc-ingress
+  name: myapp1-ingress
   annotations: 
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: myapp2.stepintolearning.xyz
+    - host: myapp1.stepintolearning.xyz
       http:
         paths:
           - path: /
@@ -21,12 +21,12 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: myapp2-svc-ingress
+  name: myapp2-ingress
   annotations: 
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: www.stepintolearning.xyz
+    - host: myapp2.stepintolearning.xyz
       http:
         paths:
           - path: /
