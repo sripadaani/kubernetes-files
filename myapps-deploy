@@ -2,29 +2,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: www-deploy
-  labels:
-    app: www
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: www
-  template:
-    metadata:
-      labels: 
-        app: www
-    spec:
-      containers:
-        - name: mywebapp
-          image: sripadaani/kube-test-app-v2
-          ports:
-            - containerPort: 80
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: myapp1-deploy
   labels:
     app: myapp1
@@ -63,7 +40,7 @@ spec:
     spec:
       containers:
         - name: myapp2
-          image: sripadaani/sample-app-v04
+          image: sripadaani/sample-app-v02
           ports:
             - containerPort: 80
 
